@@ -147,7 +147,7 @@ input::-webkit-slider-thumb {
     justify-content: space-evenly;
     height: 20vh;
 }
-.panel button {
+.save, .generate, .library{
     outline: none;
     border: none;
     font-size: 1.2rem;
@@ -304,4 +304,20 @@ input::-webkit-slider-thumb {
      border-radius: 0 5px 5px 0;
      cursor: pointer;
      height: 4rem;
+}
+.github {
+    position: absolute;
+    right: 8%;
+    top: 83%;
+     padding: 1rem;
+    outline: none;
+    border: none;
+    color: black;
+    font-size: 2rem;
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.github:hover {
+    opacity: 0.5;
 }

@@ -314,3 +314,5 @@ function getLocal(){
  }
 }
 getLocal();
+const gitIcon = document.querySelector('.github');
+gitIcon.addEventListener('click', () => document.location.href = 'https://github.com/suryansh-makharia');
