@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&family=Open+Sans:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+button {
+    font-family: 'Open Sans', sans-serif;
+}
+i {
+    pointer-events: none;
+}
+.colors {
+    min-height: 80vh;
+    display: flex;
+    
+}
+.color {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: #fcfcfc;
+}
+.color h2{
+    font-size: 2rem;
+    cursor: pointer;
+}
+@media only screen and (min-width: 420px){
+.copy-to-clipboard {
+    position: absolute;
+    top: 29%;
+    left: 37%;
+    background-color: rgb(51, 48, 48);
+    color: white;
+    width: auto;
+    border-radius: 5px;
+    height: 1.8rem;
+    padding: 2px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20rem);
+    transition: opacity 0.2s ease-in;
+}
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(51, 48, 48);
+    position: absolute;
+    top: -30%;
+  }
+.heading h2:hover + .copy-to-clipboard{
+     opacity: 1;
+     transform: translateY(1rem);
+ }
+ 
+}
+
+@media only screen and (max-width: 420px){
+    .copy-to-clipboard {
+        display: none;
+    }
+    .heading h2 {
+        font-size: 1rem;
+    }
+}
+.sliders {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-between;
+    bottom: 0%;
+    background: white;
+    padding: 1rem;
+    width: 80%;
+    height: 30%;
+    pointer-events: none;
+    border-radius: 1rem 1rem 0 0;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.sliders.active {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: all;
+}
+.sliders button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 1rem;
+    outline: none;
+    border: none;
+    padding: 0.4rem 0.4rem 0 0;
+    background: white;
+    cursor: pointer;
+}
+.hue-input, .bright-input, .sat-input {
+    appearance: none;
+    outline: none;
+    border-radius: 2rem;
+    height: 0.64rem;
+    cursor: pointer;
+}
+input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+.adjust, .lock {
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 2rem 0;
+    background: transparent;
+}
+.lock i{
+    font-size: 1.8rem;
+}
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+.panel button {
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    margin: 1rem;
+    cursor: pointer;
+    background: rgb(31, 33, 63);
+    padding: 0.6rem 1rem 0.6rem 1rem;
+    border-radius: 1rem;
+    color: white;
+}
+.panel span {
+    font-size: 1.5rem;
+}
+.library-panel, .generate-panel, .save-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.generate {
+    width: 3.5rem;
+}
+@keyframes bounceIn {
+    0% { 
+       opacity: 0; 
+       transform: scale(.3);
+    }
+    50% { 
+       opacity: 1;
+       transform: scale(1.05);
+    }
+    70% {
+       transform: scale(.9);
+    }
+    100% {
+       transform: scale(1);
+    }
+ } 
+.save-container, .library-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+.save-popup, .library-popup {
+    background:  #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1rem;
+    min-width: 30%;
+    min-height: 30vh;
+    transform: translateY(-2rem);
+    transition: all 0.5s ease;
+    position: absolute;
+    height: 35vh;
+}
+@media only screen and (min-height: 400px){
+    .save-popup h4, .library-popup h4 {
+    font-size: 2rem;
+    padding: 2rem;
+    text-shadow: 5px 5px 5px rgb(201, 201, 201);
+ }
+}
+@media only screen and (max-width: 420px){
+    .save-popup h4, .library-popup h4 {
+        font-size: 1rem;
+        padding: 1rem;
+        text-shadow: 5px 5px 5px rgb(201, 201, 201);
+ }
+}
+.save-container.active, .library-container.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.save-popup.active, .library-popup.active {
+    transform: translateY(0rem);
+} 
+.close-save, .close-library {
+    outline: none;
+    border: none;
+    border-radius: 0 2rem 0 0;
+    position: fixed;
+    top: 8px;
+    right: 10px;
+    background: transparent;
+    cursor: pointer;
+}
+.save-name {
+    font-size: 1.3rem;
+    height: 18%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    box-shadow: 5px 5px 5px rgb(206, 206, 206);
+    border-radius: 0.5rem;
+    width: 60%;
+}
+.save-submit {
+    margin: 2rem;
+    padding: 0.7rem 1rem;
+    background: rgb(1, 1, 34);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 0.7rem;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgb(168, 168, 168);
+}
+.library-popup {
+    min-width: 40%;
+    padding: 1rem;
+    justify-content: flex-start;
+    overflow: scroll;
+    max-height: 50vh;
+}
+.custom-palette {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+}
+.small-preview {
+    display: flex;
+    flex: 1;
+}
+.custom-palette h4 {
+    font-size: 1.8rem;
+    flex: 1;
+}
+.small-preview div {
+    height: 4rem;
+    flex: 1;
+    width: 4rem;
+}
+.pick-palette-btn {
+     outline: none;
+     border: none;
+     background: rgb(1, 1, 34);
+     color: white;
+     font-size: 1.2rem;
+     padding: 0.5rem;
+     border-radius: 0 5px 5px 0;
+     cursor: pointer;
+     height: 4rem;
+}
