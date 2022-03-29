@@ -12,4 +12,4 @@ git clone https://github.com/suryanshmak/fun-color-picker/
 cd fun-color-picker
 ```
 
-- Open with Live Server and enjoy!
+Open with Live Server and enjoy!
